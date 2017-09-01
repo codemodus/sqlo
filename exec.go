@@ -3,6 +3,7 @@ package sqlo
 import (
 	"context"
 	"database/sql"
+	"fmt"
 )
 
 // Exec ...
@@ -34,5 +35,9 @@ func exec(ctx context.Context, q Queryable, qry Query) error {
 		return nil
 	}
 
-	return qry.Send(ctx, q)
+	if err := qry.Send(ctx, q); err != nil {
+		return fmt.Errorf("send (%s): %s", qry.Scope(), err)
+	}
+
+	return nil
 }

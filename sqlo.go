@@ -30,6 +30,7 @@ type DB interface {
 // Query ...
 type Query interface {
 	Send(ctx context.Context, q Queryable) error
+	Scope() string
 }
 
 // Hydratable ...

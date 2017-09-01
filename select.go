@@ -6,9 +6,9 @@ import (
 )
 
 // Select ...
-func (s *SQLO) Select(ctx context.Context, dest Hydratable, qry string, args ...interface{}) error {
+func (s *SQLO) Select(ctx context.Context, scope string, dest Hydratable, qry string, args ...interface{}) error {
 	if err := s.db.SelectContext(ctx, dest, qry, args...); err != nil {
-		return err
+		return fmt.Errorf("select (%s): %s", scope, err)
 	}
 
 	if !dest.IsHydrated() {
