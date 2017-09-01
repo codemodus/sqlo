@@ -46,3 +46,8 @@ type SQLO struct {
 func New(db DB) (*SQLO, error) {
 	return &SQLO{db: db}, nil
 }
+
+// SQLDB ...
+func (s *SQLO) SQLDB() *sql.DB {
+	return s.db.SQLDB()
+}
