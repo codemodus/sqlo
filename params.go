@@ -308,15 +308,75 @@ type StringOrEach struct {
 }
 
 // MakeStringOrEach ...
-func MakeStringOrEach(s string, each bool) StringOrEach {
-	if !each && s == "" {
-		s = ":|:"
+func MakeStringOrEach(str string, each bool) StringOrEach {
+	if !each && str == "" {
+		str = ":|:"
 	}
 
 	return StringOrEach{
 		Val: sql.NullString{
-			String: s,
+			String: str,
 			Valid:  !each,
 		},
 	}
+}
+
+// MakeBoolOrEach ...
+func (s *SQLO) MakeBoolOrEach(b, each bool) BoolOrEach {
+	return MakeBoolOrEach(b, each)
+}
+
+// MakeInt32OrEach ...
+func (s *SQLO) MakeInt32OrEach(n int32, each bool) Int32OrEach {
+	return MakeInt32OrEach(n, each)
+}
+
+// MakeInt64OrEach ...
+func (s *SQLO) MakeInt64OrEach(n int64, each bool) Int64OrEach {
+	return MakeInt64OrEach(n, each)
+}
+
+// MakeLimitLapse ...
+func (s *SQLO) MakeLimitLapse(lim, lap uint32) LimitLapse {
+	return MakeLimitLapse(lim, lap)
+}
+
+// MakeSpanInt32 ...
+func (s *SQLO) MakeSpanInt32(first, final int32, each, desc bool) SpanInt32 {
+	return MakeSpanInt32(first, final, each, desc)
+}
+
+// MakeSpanInt64 ...
+func (s *SQLO) MakeSpanInt64(first, final int64, each, desc bool) SpanInt64 {
+	return MakeSpanInt64(first, final, each, desc)
+}
+
+// MakeSpanTime ...
+func (s *SQLO) MakeSpanTime(first, final time.Time, each, desc bool) SpanTime {
+	return MakeSpanTime(first, final, each, desc)
+}
+
+// MakeSpanUint32 ...
+func (s *SQLO) MakeSpanUint32(first, final uint32, each, desc bool) SpanUint32 {
+	return MakeSpanUint32(first, final, each, desc)
+}
+
+// MakeSpanUint64 ...
+func (s *SQLO) MakeSpanUint64(first, final uint64, each, desc bool) SpanUint64 {
+	return MakeSpanUint64(first, final, each, desc)
+}
+
+// MakeStringOrEach ...
+func (s *SQLO) MakeStringOrEach(str string, each bool) StringOrEach {
+	return MakeStringOrEach(str, each)
+}
+
+// MakeUint32OrEach ...
+func (s *SQLO) MakeUint32OrEach(n uint32, each bool) Uint32OrEach {
+	return MakeUint32OrEach(n, each)
+}
+
+// MakeUint64OrEach ...
+func (s *SQLO) MakeUint64OrEach(n uint64, each bool) Uint64OrEach {
+	return MakeUint64OrEach(n, each)
 }
