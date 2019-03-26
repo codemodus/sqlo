@@ -3,7 +3,6 @@ package sqlo
 import (
 	"context"
 	"database/sql"
-	"fmt"
 )
 
 // SQLO ...
@@ -223,7 +222,6 @@ func (r *Row) Scan(dest ...interface{}) {
 		return
 	}
 	r.sc = r.Row.Scan(dest...)
-	fmt.Println("sqlo", r.sc)
 }
 
 //
