@@ -1,4 +1,4 @@
 # sqlo
 
-    go get github.com/codemodus/sqlo
+    go get -u github.com/codemodus/sqlo
 
